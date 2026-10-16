@@ -22,6 +22,7 @@ int main(){
                 arr[j+1]=temp;
                 flag=1;
             }
+            
         }
         if(flag==0)
                 break;
