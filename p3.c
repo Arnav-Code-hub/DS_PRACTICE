@@ -4,21 +4,28 @@
 void sliding_window(int arr[], int n,int k){
     int left,right,sum;
     left=0;
-    right=n-1;
+    right=0;
     sum=0;
     int lenght=0;
     int min=n+1;
-    for(int i=0;i<right;i++){
-        sum=sum+arr[i];
+    for(;right<n;right++){
+        sum=sum+arr[right];
         while (sum>k){
+            lenght=right-left+1;
+
             sum=sum-arr[left];
             left++;
+            
+            if(min>lenght)
+                min=lenght;
         }
-        lenght=i-left+1;
-        if(min>lenght)
-            min=lenght;
     }
-    
+    printf("minimum length of subarray with sum greater than k is: %d\n", min);
+    printf("the subarray is: ");
+    for(int i=left;i<=right-1;i++){
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
 }
 int main(){
     int n;
