@@ -20,7 +20,7 @@ int isstackempty(int arr[],int n){
 }
 
 int push(int arr[],int n,int x){
-    if(!(isstackfull)){
+    if(!(isstackfull(arr,n))){
         top++;
         arr[top]=x;
     }
@@ -30,7 +30,7 @@ int push(int arr[],int n,int x){
 }
 
 int pop(int arr[],int n){
-    if(!(isstackempty)){
+    if(!(isstackempty(arr,n))){
         printf("popped item is:- %d",arr[top]);
         top--;
     }
@@ -62,7 +62,6 @@ int main(){
     int arr[n];
 
     int choice=0;
-    clrscr();
     printf("enter 1 to push\n");
     printf("enter 2 to pop\n");
     printf("enter 3 to peek\n");
@@ -74,12 +73,13 @@ int main(){
 
     while(choice!=5){
         switch(choice){
-            case 1:
+            case 1:{
                 int x;
                 printf("enter element to push:- ");
                 scanf("%d",&x);
                 push(arr,n,x);
                 break;
+            }
             case 2:
                 pop(arr,n);
                 break;
