@@ -8,7 +8,7 @@ struct queue{
 };
 
 int isempty(struct queue *q){
-    if(q->front==-1 && q->rear==-1){
+    if(q->front==q->rear){
         return 1;
     }
     else{
