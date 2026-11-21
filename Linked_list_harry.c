@@ -84,6 +84,9 @@ int main(){
     head=insertatend(head,100);
     linkedlisttraversal(head);
 
+    head=deletenode(head);
+    linkedlisttraversal(head);
+
     return 0;
 }
 

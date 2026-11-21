@@ -29,8 +29,37 @@ int count(struct node *head){
     return count;
 }
 
-void insert(struct node *head,int x){
+struct node * deletefirstnode(struct node* head){
+    struct node *ptr=head;
+    head=head->next;
+    free(ptr);
+    return head;
+}
 
+struct node * deleteindexnode(struct node *head,int index){
+    struct node * p=head;
+    struct node * q=head->next;
+    for(int i=0;i<index-1;i++){
+        p=p->next;
+        q=q->next;
+    }
+    p->next=q->next;
+    free(q);
+
+    return head;
+}
+
+struct node * deletelastnode(struct node * head){
+    struct node * p=head;
+    struct node * q=head->next;
+    while (q->next!=NULL)
+    {
+        p=p->next;
+        q=q->next;
+    }
+    p->next=NULL;
+    free(q);
+    return head;
 }
 
 int main(){
@@ -57,8 +86,14 @@ int main(){
 
         printf("do you want to continue?? 0:yes 1:no  ");
         scanf("%d",&choice);
-    }
+    }   
 
+    print(head);
+
+    head=deletefirstnode(head);
+    print(head);
+
+    head=deleteindexnode(head,3);
     print(head);
     return 0;
 }
