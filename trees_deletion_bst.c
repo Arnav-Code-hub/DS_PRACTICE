@@ -28,6 +28,16 @@ struct node * createnode(){
 }
 
 struct node* deletenode(struct node* root,int value){
+        struct node* inpre;
+        if (root==NULL){
+            return NULL;
+        }
+        if(root->left==NULL && root->right==NULL){
+            free(root);
+            return NULL;
+        }
+
+
         if(root->data>value){
             deletenode(root->left,value);
         }
@@ -35,8 +45,12 @@ struct node* deletenode(struct node* root,int value){
             deletenode(root->right,value);
         }
         else{
-            
+           inpre=inorderpredecesscor(root);
+           root->data=inpre->data;
+           root->left=deletenode(root->left,inpre->data);
         }
+
+        return root;
 
 }
 
